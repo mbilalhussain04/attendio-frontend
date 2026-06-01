@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  background: #f8fbff;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  text-align: left;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+
+/* ========================================================= */
+/* DOTS ANIMATION */
+/* ========================================================= */
+.dots-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.dot {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background-color: var(--dot-color);
+  animation: dot-pulse 2.5s infinite both;
+  opacity: 0.7;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0.0s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 1.0s;
+}
+
+.dot:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.dot:nth-child(5) {
+  animation-delay: 2.0s;
+}
+
+@keyframes dot-pulse {
+
+  0%,
+  100% {
+    transform: scale(0.8);
+    background-color: var(--dot-pulse-start);
+    box-shadow: 0 0 0 0 var(--box-shadow-color);
+  }
+
+  50% {
+    transform: scale(1.1);
+    background-color: var(--dot-pulse-mid);
+    box-shadow: 0 0 0 6px transparent;
+  }
+}
