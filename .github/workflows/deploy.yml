@@ -1,0 +1,32 @@
+name: deploy-frontend
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: production-frontend
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy frontend on VPS
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script_stop: true
+          script: |
+            cd /opt/attendio/frontend
+            git fetch origin main
+            git reset --hard origin/main
+            docker build \
+              --build-arg VITE_API_BASE_URL=https://api.attendio.technoflick.com/api/v1 \
+              --build-arg VITE_ENABLE_AUTH_API_CONSOLE=false \
+              -t attendio-frontend:latest .
+            docker rm -f attendio-frontend 2>/dev/null || true
+            docker run -d --name attendio-frontend --restart unless-stopped -p 127.0.0.1:5174:80 attendio-frontend:latest
