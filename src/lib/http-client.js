@@ -61,6 +61,13 @@ const refreshAccessToken = async () => {
     return refreshPromise;
 };
 
+const shouldForceLogoutOnUnauthorized = (path) => {
+    if (path.startsWith("/billing/")) {
+        return false;
+    }
+    return path === "/auth/me" || path === "/auth/refresh";
+};
+
 const request = async (path, options = {}, retryOnUnauthorized = true) => {
     const { url, init } = buildRequest(path, options);
 
@@ -73,14 +80,16 @@ const request = async (path, options = {}, retryOnUnauthorized = true) => {
                 await refreshAccessToken();
                 return request(path, options, false);
             } catch {
-                window.dispatchEvent(new Event("force-logout"));
+                if (shouldForceLogoutOnUnauthorized(path)) {
+                    window.dispatchEvent(new Event("force-logout"));
+                }
             }
         }
         const message = errorMessageFrom(data);
         const error = new Error(message);
         error.status = response.status;
         error.data = data;
-        if (response.status === 401) {
+        if (response.status === 401 && shouldForceLogoutOnUnauthorized(path)) {
             window.dispatchEvent(new Event("force-logout"));
         }
         throw error;
