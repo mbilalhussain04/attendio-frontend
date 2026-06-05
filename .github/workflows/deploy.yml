@@ -12,6 +12,8 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      VPS_FRONTEND_ENV_B64: ${{ secrets.VPS_FRONTEND_ENV_B64 }}
     steps:
       - name: Deploy frontend on VPS
         uses: appleboy/ssh-action@v1.2.0
@@ -19,14 +21,22 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          envs: VPS_FRONTEND_ENV_B64
           script_stop: true
           script: |
             cd /opt/attendio/frontend
             git fetch origin main
             git reset --hard origin/main
+            if [ -n "${VPS_FRONTEND_ENV_B64:-}" ]; then
+              printf '%s' "$VPS_FRONTEND_ENV_B64" | base64 -d > .env
+              chmod 600 .env
+              set -a
+              . ./.env
+              set +a
+            fi
             docker build \
-              --build-arg VITE_API_BASE_URL=https://api.attendio.technoflick.com/api/v1 \
-              --build-arg VITE_ENABLE_AUTH_API_CONSOLE=false \
+              --build-arg VITE_API_BASE_URL="${VITE_API_BASE_URL:-https://api.attendio.technoflick.com/api/v1}" \
+              --build-arg VITE_ENABLE_AUTH_API_CONSOLE="${VITE_ENABLE_AUTH_API_CONSOLE:-false}" \
               -t attendio-frontend:latest .
             docker rm -f attendio-frontend 2>/dev/null || true
             docker run -d --name attendio-frontend --restart unless-stopped -p 127.0.0.1:5174:80 attendio-frontend:latest
