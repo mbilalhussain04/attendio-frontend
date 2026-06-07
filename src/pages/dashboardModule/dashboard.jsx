@@ -355,7 +355,7 @@ export default function Dashboard() {
     const employeeTimesheet = useEmployeeTimesheetQuery(employeeScopeSelected ? employeeId : undefined, monthRange, employeeScopeSelected && canViewTeam);
     const companyLeaves = useCompanyLeaveRequestsQuery({ year: month.slice(0, 4) }, canSeeLeaveCompany);
     const myLeaves = useMyLeaveRequestsQuery({ year: month.slice(0, 4) }, !canSeeLeaveCompany);
-    const schedules = useScheduleAssignmentsQuery({ date_from: weekRange.from, date_to: weekRange.to }, canSeeSchedule);
+    const schedules = useScheduleAssignmentsQuery({ date_from: weekRange.from, date_to: weekRange.to, entry_kind: "shift" }, canSeeSchedule);
     const notifications = useNotificationsQuery(true);
 
     const branchOptions = useMemo(() => [

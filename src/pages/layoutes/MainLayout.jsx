@@ -1,34 +1,16 @@
-import { useEffect, useState } from "react";
-import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Navigate, Outlet } from "react-router-dom";
 import clsx from "clsx";
-import { toast } from "sonner";
 import { Loader } from "../../components/loader/dotLoader";
 import { useAuth } from "../../context/auth-context.jsx";
 import NavBar from "../../components/layout/navBar";
 
 export default function MainLayout() {
     const { isAuthenticated, isLoading } = useAuth();
-    const location = useLocation();
-    const navigate = useNavigate();
 
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-    useEffect(() => {
-        const params = new URLSearchParams(location.search);
-        if (params.get("sso") === "success") {
-            toast.success("Login successful", { id: "sso-login-success" });
-            params.delete("sso");
-            navigate(
-                {
-                    pathname: location.pathname,
-                    search: params.toString() ? `?${params.toString()}` : "",
-                },
-                { replace: true }
-            );
-        }
-    }, [location.pathname, location.search, navigate]);
 
     if (isLoading) {
         return (

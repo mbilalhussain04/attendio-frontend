@@ -15,6 +15,7 @@ import {
     ShieldCheck,
     Smartphone,
     Users,
+    Video,
     X,
 } from "lucide-react";
 import { useAuth } from "../../context/auth-context.jsx";
@@ -28,6 +29,7 @@ const navItems = [
     { key: "organization", label: "Organization", link: "/organization", icon: <GitBranch size={18} />, always: true, permissions: ["org.view_self", "org.view_team", "org.view_company", "settings.tenant", "reports.company"] },
     { key: "leaves", label: "Leaves", link: "/leaves", icon: <CalendarDays size={18} />, permissions: ["leave.request", "leave.view_self", "leave.view_company", "leave.review"] },
     { key: "scheduling", label: "Scheduling", link: "/scheduling", icon: <CalendarClock size={18} />, permissions: ["schedule.view_self", "schedule.view_team", "schedule.view_company", "schedule.manage", "settings.tenant", "reports.company"] },
+    { key: "scheduling", label: "Meetings", link: "/meetings", icon: <Video size={18} />, permissions: ["meetings.view_self", "meetings.view_team", "meetings.view_company", "meetings.manage", "schedule.view_self", "schedule.view_team", "schedule.view_company", "schedule.manage", "settings.tenant", "reports.company"] },
     { key: "timesheets", label: "Timesheets", link: "/timesheets", icon: <CheckCircle2 size={18} />, permissions: ["attendance.view_self", "attendance.view_team", "attendance.view_company", "attendance.approve", "reports.company"] },
     { key: "kiosk", label: "Kiosk", link: "/kiosk", icon: <Smartphone size={18} />, always: true, permissions: ["settings.kiosk", "users.reset_pin", "attendance.kiosk_manage", "settings.tenant"] },
     { key: "rules", label: "Rules", link: "/compliance", icon: <ShieldCheck size={18} />, permissions: ["attendance.configure", "attendance.shift_manage", "attendance.holiday_manage", "attendance.geofence_manage", "leave.configure"] },

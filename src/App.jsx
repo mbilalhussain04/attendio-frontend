@@ -1,7 +1,8 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useAuth } from "./context/auth-context.jsx";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { Loader } from "./components/loader/dotLoader.jsx";
 import { moduleEnabled } from "./config/workspaceProfiles.js";
 import { useBillingStatusQuery } from "./hooks/useBillingService.ts";
@@ -42,6 +43,33 @@ function PageLoader() {
 
 function LazyPage({ children }) {
   return <Suspense fallback={<PageLoader />}>{children}</Suspense>;
+}
+
+function SsoToastListener() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get("sso") !== "success") return undefined;
+
+    const timer = window.setTimeout(() => {
+      toast.success("Login successful", { id: "sso-login-success" });
+    }, 120);
+
+    params.delete("sso");
+    navigate(
+      {
+        pathname: location.pathname,
+        search: params.toString() ? `?${params.toString()}` : "",
+      },
+      { replace: true }
+    );
+
+    return () => window.clearTimeout(timer);
+  }, [location.pathname, location.search, navigate]);
+
+  return null;
 }
 
 const hasAnyPermission = (user, permissions = []) => {
@@ -112,44 +140,48 @@ function BillingAccessGuard({ children }) {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<AuthLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="sign-in" element={<SignIn />} />
-        <Route path="sign-up" element={<SignUp />} />
-        <Route path="forgot-password" element={<ForgotPassword />} />
-        <Route path="reset-password" element={<ResetPassword />} />
-        <Route path="verify-email" element={<VerifyEmail />} />
-        <Route path="*" element={<CatchAll />} />
+    <>
+      <SsoToastListener />
+      <Routes>
+        <Route path="/" element={<AuthLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="sign-in" element={<SignIn />} />
+          <Route path="sign-up" element={<SignUp />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route path="reset-password" element={<ResetPassword />} />
+          <Route path="verify-email" element={<VerifyEmail />} />
+          <Route path="*" element={<CatchAll />} />
 
-      </Route>
+        </Route>
 
-      <Route
-        element={
-          <ProtectedRoute>
-            <BillingAccessGuard>
-              <MainLayout />
-            </BillingAccessGuard>
-          </ProtectedRoute>
-        }
-      >
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="onboarding" element={<WorkspaceOnboarding />} />
-        <Route path="attendance" element={<ModuleRoute moduleKey="attendance" anyPermission={["attendance.check_in", "attendance.check_out", "attendance.view_self", "attendance.view_team", "attendance.view_company"]}><LazyPage><AttendancePage /></LazyPage></ModuleRoute>} />
-        <Route path="correction-requests" element={<ModuleRoute moduleKey="attendance" anyPermission={["attendance.manual_entry", "attendance.approve"]}><LazyPage><AttendancePage initialTab="correction-request" correctionOnly /></LazyPage></ModuleRoute>} />
-        <Route path="employees" element={<ModuleRoute moduleKey="employees" anyPermission={["users.invite", "reports.company"]}><LazyPage><EmployeesPage /></LazyPage></ModuleRoute>} />
-        <Route path="leaves" element={<ModuleRoute moduleKey="leaves" anyPermission={["leave.request", "leave.view_self", "leave.view_company", "leave.review"]}><LazyPage><LeavesPage /></LazyPage></ModuleRoute>} />
-        <Route path="organization" element={<ModuleRoute anyPermission={["org.view_self", "org.view_team", "org.view_company", "settings.tenant", "reports.company"]}><WorkspacePage /></ModuleRoute>} />
-        <Route path="scheduling" element={<ModuleRoute moduleKey="scheduling" anyPermission={["schedule.view_self", "schedule.view_team", "schedule.view_company", "schedule.manage", "settings.tenant", "reports.company"]}><LazyPage><SchedulingPage /></LazyPage></ModuleRoute>} />
-        <Route path="timesheets" element={<ModuleRoute moduleKey="timesheets" anyPermission={["attendance.view_self", "attendance.view_team", "attendance.view_company", "attendance.approve", "reports.company"]}><LazyPage><TimesheetsPage /></LazyPage></ModuleRoute>} />
-        <Route path="kiosk" element={<ModuleRoute anyPermission={["settings.kiosk", "users.reset_pin", "attendance.kiosk_manage", "settings.tenant"]}><LazyPage><KioskPage /></LazyPage></ModuleRoute>} />
-        <Route path="compliance" element={<ModuleRoute moduleKey="rules" anyPermission={["attendance.configure", "attendance.shift_manage", "attendance.holiday_manage", "attendance.geofence_manage", "leave.configure"]}><LazyPage><CompliancePage /></LazyPage></ModuleRoute>} />
-        <Route path="settings" element={<ModuleRoute anyPermission={["settings.tenant", "roles.manage", "audit.read", "api_keys.manage", "reports.company"]}><WorkspacePage /></ModuleRoute>} />
-        <Route path="security" element={<ModuleRoute anyPermission={["settings.tenant", "roles.manage", "audit.read", "api_keys.manage"]}><LazyPage><AuthApiConsole /></LazyPage></ModuleRoute>} />
-        <Route path="profilePage" element={<LazyPage><ProfilePage /></LazyPage>} />
-      </Route>
+        <Route
+          element={
+            <ProtectedRoute>
+              <BillingAccessGuard>
+                <MainLayout />
+              </BillingAccessGuard>
+            </ProtectedRoute>
+          }
+        >
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="onboarding" element={<WorkspaceOnboarding />} />
+          <Route path="attendance" element={<ModuleRoute moduleKey="attendance" anyPermission={["attendance.check_in", "attendance.check_out", "attendance.view_self", "attendance.view_team", "attendance.view_company"]}><LazyPage><AttendancePage /></LazyPage></ModuleRoute>} />
+          <Route path="correction-requests" element={<ModuleRoute moduleKey="attendance" anyPermission={["attendance.manual_entry", "attendance.approve"]}><LazyPage><AttendancePage initialTab="correction-request" correctionOnly /></LazyPage></ModuleRoute>} />
+          <Route path="employees" element={<ModuleRoute moduleKey="employees" anyPermission={["users.invite", "reports.company"]}><LazyPage><EmployeesPage /></LazyPage></ModuleRoute>} />
+          <Route path="leaves" element={<ModuleRoute moduleKey="leaves" anyPermission={["leave.request", "leave.view_self", "leave.view_company", "leave.review"]}><LazyPage><LeavesPage /></LazyPage></ModuleRoute>} />
+          <Route path="organization" element={<ModuleRoute anyPermission={["org.view_self", "org.view_team", "org.view_company", "settings.tenant", "reports.company"]}><WorkspacePage /></ModuleRoute>} />
+          <Route path="scheduling" element={<ModuleRoute moduleKey="scheduling" anyPermission={["schedule.view_self", "schedule.view_team", "schedule.view_company", "schedule.manage", "settings.tenant", "reports.company"]}><LazyPage><SchedulingPage mode="shifts" /></LazyPage></ModuleRoute>} />
+          <Route path="meetings" element={<ModuleRoute moduleKey="scheduling" anyPermission={["schedule.view_self", "schedule.view_team", "schedule.view_company", "schedule.manage", "settings.tenant", "reports.company"]}><LazyPage><SchedulingPage mode="meetings" /></LazyPage></ModuleRoute>} />
+          <Route path="timesheets" element={<ModuleRoute moduleKey="timesheets" anyPermission={["attendance.view_self", "attendance.view_team", "attendance.view_company", "attendance.approve", "reports.company"]}><LazyPage><TimesheetsPage /></LazyPage></ModuleRoute>} />
+          <Route path="kiosk" element={<ModuleRoute anyPermission={["settings.kiosk", "users.reset_pin", "attendance.kiosk_manage", "settings.tenant"]}><LazyPage><KioskPage /></LazyPage></ModuleRoute>} />
+          <Route path="compliance" element={<ModuleRoute moduleKey="rules" anyPermission={["attendance.configure", "attendance.shift_manage", "attendance.holiday_manage", "attendance.geofence_manage", "leave.configure"]}><LazyPage><CompliancePage /></LazyPage></ModuleRoute>} />
+          <Route path="settings" element={<ModuleRoute anyPermission={["settings.tenant", "roles.manage", "audit.read", "api_keys.manage", "reports.company"]}><WorkspacePage /></ModuleRoute>} />
+          <Route path="security" element={<ModuleRoute anyPermission={["settings.tenant", "roles.manage", "audit.read", "api_keys.manage"]}><LazyPage><AuthApiConsole /></LazyPage></ModuleRoute>} />
+          <Route path="profilePage" element={<LazyPage><ProfilePage /></LazyPage>} />
+        </Route>
 
 
-    </Routes>
+      </Routes>
+    </>
   );
 }

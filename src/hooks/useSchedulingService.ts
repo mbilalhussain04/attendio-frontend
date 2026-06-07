@@ -40,6 +40,17 @@ export const useScheduleAssignmentsQuery = (params: Record<string, unknown> = {}
     queryKey: ["scheduling", "assignments", params],
     queryFn: () => authService.fetchData(`/scheduling/assignments${queryString(params)}`),
     enabled,
+    placeholderData: (previousData) => previousData,
+    staleTime: 15_000,
+    retry: false,
+});
+
+export const useMeetingAssignmentsQuery = (params: Record<string, unknown> = {}, enabled = true) => useQuery({
+    queryKey: ["meetings", "assignments", params],
+    queryFn: () => authService.fetchData(`/meetings/assignments${queryString(params)}`),
+    enabled,
+    placeholderData: (previousData) => previousData,
+    staleTime: 15_000,
     retry: false,
 });
 
@@ -49,4 +60,12 @@ export const useSaveScheduleAssignmentMutation = () => useMutation({
 
 export const useDeleteScheduleAssignmentMutation = () => useMutation({
     mutationFn: (id: string) => authService.deleteData(`/scheduling/assignments/${id}`),
+});
+
+export const useSaveMeetingAssignmentMutation = () => useMutation({
+    mutationFn: (data: unknown) => authService.postData("/meetings/assignments", data),
+});
+
+export const useDeleteMeetingAssignmentMutation = () => useMutation({
+    mutationFn: (id: string) => authService.deleteData(`/meetings/assignments/${id}`),
 });

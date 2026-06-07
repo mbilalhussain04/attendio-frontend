@@ -9,8 +9,31 @@ import { getInitials } from "../../utils";
 const employeeName = (employee) => [employee?.first_name, employee?.last_name].filter(Boolean).join(" ") || employee?.email || "Employee";
 const employeeRole = (employee) => employee?.job_title || employee?.role_name || employee?.role_key || "Employee";
 const employeeAvatar = (employee) => employee?.profile_picture || employee?.avatar_url || employee?.profile_picture_url;
-const permissionLabel = (key = "") => key.split(".").map((part) => part.replaceAll("_", " ")).join(" / ");
+const permissionNames = {
+    "schedule.view_self": "View own schedule",
+    "schedule.view_team": "View team schedules",
+    "schedule.view_company": "View all company schedules",
+    "schedule.manage": "Create, edit, and delete shifts",
+    "meetings.view_self": "View own meetings",
+    "meetings.view_team": "View team meetings",
+    "meetings.view_company": "View all company meetings",
+    "meetings.manage": "Create, edit, and delete meetings",
+};
+const permissionLabel = (key = "") => permissionNames[key] || key.split(".").map((part) => part.replaceAll("_", " ")).join(" / ");
 const permissionGroup = (key = "") => key.split(".")[0] || "other";
+const accessSections = [
+    {
+        title: "Scheduling access",
+        description: "Control whether this employee can see only their shifts, team shifts, all shifts, or manage shifts.",
+        keys: ["schedule.view_self", "schedule.view_team", "schedule.view_company", "schedule.manage"],
+    },
+    {
+        title: "Meetings access",
+        description: "Meetings are separate from shifts, with their own visibility and manage controls.",
+        keys: ["meetings.view_self", "meetings.view_team", "meetings.view_company", "meetings.manage"],
+    },
+];
+const quickAccessPermissionKeys = new Set(accessSections.flatMap((section) => section.keys));
 
 function EmployeeChipPicker({ employees, selectedId, onSelect }) {
     const [query, setQuery] = useState("");
@@ -100,7 +123,11 @@ export default function AuthApiConsole() {
         if (!selectedEmployeeId && employeeRows[0]?.id) setSelectedEmployeeId(String(employeeRows[0].id));
     }, [employeeRows, selectedEmployeeId]);
 
-    const filteredPermissions = permissionRows.filter((permission) => `${permission.key || ""} ${permission.description || ""}`.toLowerCase().includes(permissionQuery.trim().toLowerCase()));
+    const filteredPermissions = permissionRows.filter((permission) => {
+        if (quickAccessPermissionKeys.has(permission.key)) return false;
+        return `${permission.key || ""} ${permission.description || ""}`.toLowerCase().includes(permissionQuery.trim().toLowerCase());
+    });
+    const permissionsByKey = useMemo(() => new Map(permissionRows.map((permission) => [permission.key, permission])), [permissionRows]);
     const groupedPermissions = filteredPermissions.reduce((groups, permission) => {
         const group = permissionGroup(permission.key);
         if (!groups[group]) groups[group] = [];
@@ -161,6 +188,36 @@ export default function AuthApiConsole() {
                             />
                     </div>
                     <div className="mt-4 min-h-0 flex-1 space-y-4 overflow-auto pr-1">
+                            {accessSections.map((section) => {
+                                const rows = section.keys.map((key) => permissionsByKey.get(key)).filter(Boolean);
+                                if (!rows.length) return null;
+                                return (
+                                    <div key={section.title} className="rounded-2xl border border-blue-100 bg-blue-50/45 p-3">
+                                        <p className="text-xs font-black uppercase tracking-[0.14em] text-blue-600">{section.title}</p>
+                                        <p className="mt-1 text-xs font-bold leading-5 text-slate-500">{section.description}</p>
+                                        <div className="mt-3 grid gap-2 md:grid-cols-2">
+                                            {rows.map((permission) => {
+                                                const key = permission.key;
+                                                const enabled = effectiveSet.has(key) && !denySet.has(key);
+                                                const fromRole = rolePermissions.has(key);
+                                                const overridden = allowSet.has(key) || denySet.has(key);
+                                                return (
+                                                    <div key={key} className="flex items-center justify-between gap-3 rounded-xl bg-white px-3 py-2">
+                                                        <div className="min-w-0">
+                                                            <p className="truncate text-sm font-black text-slate-950">{permissionLabel(key)}</p>
+                                                            <div className="mt-1 flex flex-wrap gap-1.5">
+                                                                {fromRole && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-black uppercase text-slate-500">Role</span>}
+                                                                {overridden && <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-black uppercase text-blue-700">Override</span>}
+                                                            </div>
+                                                        </div>
+                                                        <Switch enabled={enabled} disabled={setOverrides.isPending || !selectedEmployee} onClick={() => saveToggle(key, !enabled)} />
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                );
+                            })}
                             {Object.entries(groupedPermissions).map(([group, rows]) => (
                                 <div key={group} className="rounded-2xl border border-blue-100 bg-slate-50 p-3">
                                     <p className="mb-2 text-xs font-black uppercase tracking-[0.14em] text-blue-600">{group}</p>
