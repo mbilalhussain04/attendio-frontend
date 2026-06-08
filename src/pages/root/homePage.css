@@ -1142,3 +1142,308 @@ button {
         display: none;
     }
 }
+
+/* Section:2 */
+.attendanceSection {
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+
+.attendanceTop {
+    background: #eaf2fb;
+    text-align: center;
+    color: #568bd1;
+    padding: 22px 20px 28px;
+}
+
+.attendanceTop p {
+    margin: 0;
+    font-size: clamp(15px, 1vw, 18px);
+    font-weight: 500;
+    letter-spacing: 0.4px;
+}
+
+.attendanceTop span {
+    display: block;
+    width: 120px;
+    height: 4px;
+    background: #ffb524;
+    border-radius: 999px;
+    margin: 16px auto 14px;
+}
+
+.attendanceTop h2 {
+    max-width: 1100px;
+    margin: 0 auto 14px;
+    font-size: clamp(30px, 3.2vw, 46px);
+    line-height: 1.15;
+    font-weight: 500;
+}
+
+.attendanceTop h4 {
+    max-width: 1250px;
+    margin: 0 auto;
+    font-size: clamp(16px, 1.35vw, 22px);
+    line-height: 1.55;
+    font-weight: 400;
+}
+
+.attendanceContent {
+    display: grid;
+    grid-template-columns: minmax(0, 48%) minmax(0, 52%);
+    gap: clamp(24px, 3vw, 44px);
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 28px clamp(20px, 2vw, 36px) 42px;
+    box-sizing: border-box;
+}
+
+.attendanceImageBox {
+    position: relative;
+    background: #4f8bd0;
+    border-radius: 18px;
+    overflow: hidden;
+    min-height: clamp(280px, 26vw, 390px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(12px, 1.4vw, 18px);
+    box-shadow: 0 10px 24px rgba(60, 90, 130, 0.18);
+    box-sizing: border-box;
+}
+
+.attendanceImageBox img {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    display: block;
+    animation: floatImage 5s ease-in-out infinite;
+}
+
+.modernClock {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: clamp(58px, 4.8vw, 74px);
+    height: clamp(58px, 4.8vw, 74px);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 28%, #ffffff, #f4f8ff 45%, #dcecff);
+    box-shadow:
+        0 12px 26px rgba(30, 70, 130, 0.24),
+        inset 0 2px 8px rgba(255, 255, 255, 0.95),
+        inset 0 -7px 16px rgba(86, 139, 209, 0.18);
+    z-index: 5;
+}
+
+.modernClock::before {
+    content: "";
+    position: absolute;
+    inset: 9%;
+    border-radius: 50%;
+    border: 2px solid rgba(86, 139, 209, 0.18);
+}
+
+.modernClock i {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    width: 2px;
+    height: 7%;
+    background: #568bd1;
+    border-radius: 10px;
+    transform-origin: center calc(clamp(58px, 4.8vw, 74px) * 0.39);
+}
+
+.modernClock i:nth-child(3n) {
+    background: #263b63;
+    height: 9%;
+}
+
+.modernClock b {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom center;
+    border-radius: 999px;
+}
+
+.modernClock .hour {
+    width: 5px;
+    height: 27%;
+    margin-left: -2.5px;
+    background: #263b63;
+}
+
+.modernClock .minute {
+    width: 3px;
+    height: 36%;
+    margin-left: -1.5px;
+    background: #276bc2;
+}
+
+.modernClock .second {
+    width: 2px;
+    height: 40%;
+    margin-left: -1px;
+    background: #ffb524;
+}
+
+.modernClock em {
+    position: absolute;
+    width: 12%;
+    height: 12%;
+    background: #ffb524;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modernClock small {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    transform: translateX(-50%);
+    font-size: clamp(6px, 0.45vw, 7px);
+    font-weight: 400;
+    font-style: normal;
+    color: #276bc2;
+    white-space: nowrap;
+}
+
+.attendanceText {
+    min-width: 0;
+    color: #568bd1;
+    padding-left: clamp(4px, 0.8vw, 12px);
+    padding-right: clamp(4px, 0.8vw, 12px);
+}
+
+.attendanceText h3 {
+    max-width: 760px;
+    margin: 0 0 16px;
+    font-size: clamp(26px, 2.4vw, 38px);
+    line-height: 1.18;
+    font-weight: 500;
+    text-align: left;
+}
+
+.attendanceNote {
+    max-width: 760px;
+    border-left: 4px solid #ffb524;
+    padding: 7px 0 7px 18px;
+    margin-bottom: 18px;
+    font-size: clamp(16px, 1.2vw, 20px);
+    line-height: 1.5;
+    font-weight: 500;
+    text-align: left;
+}
+
+.attendanceText p {
+    max-width: 820px;
+    margin: 0;
+    font-size: clamp(15px, 1vw, 18px);
+    line-height: 1.75;
+    font-weight: 400;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+@keyframes floatImage {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 1100px) {
+    .attendanceContent {
+        grid-template-columns: 1fr;
+        padding-inline: 18px;
+    }
+
+    .attendanceText {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .attendanceText h3,
+    .attendanceNote,
+    .attendanceText p {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .attendanceContent {
+        padding-inline: 16px;
+    }
+
+    .attendanceText {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .attendanceText p {
+        text-align: justify;
+        text-justify: inter-word;
+    }
+}
+
+@media (max-width: 600px) {
+    .attendanceTop {
+        padding: 18px 16px 24px;
+    }
+
+    .attendanceTop h2 {
+        font-size: clamp(28px, 7vw, 34px);
+    }
+
+    .attendanceTop h4 {
+        font-size: 16px;
+    }
+
+    .attendanceContent {
+        padding: 22px 14px 34px;
+    }
+
+    .attendanceImageBox {
+        border-radius: 16px;
+        min-height: 230px;
+    }
+
+    .attendanceText {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .attendanceText h3 {
+        font-size: clamp(24px, 6vw, 30px);
+    }
+
+    .attendanceNote,
+    .attendanceText p {
+        font-size: 15px;
+    }
+
+    .attendanceText p {
+        text-align: justify;
+        text-justify: inter-word;
+    }
+
+    .modernClock {
+        top: 12px;
+        right: 12px;
+    }
+
+    .modernClock small {
+        display: none;
+    }
+}
