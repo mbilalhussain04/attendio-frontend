@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "pricing": "Pricing",
+    "login": "Login",
+    "signUp": "Sign Up"
+  },
+  "hero": {
+    "eyebrow": "SMART TIME & WORKFORCE OPERATIONS",
+    "h1_line1": "The smarter way",
+    "h1_line2": "to track time across",
+    "h1_line3": "your workforce.",
+    "subtitle": "A smarter workforce time tracking platform that helps companies track employee work hours, manage attendance, and keep daily operations organized across teams and shifts.",
+    "cta": "Start with Attendio →",
+    "ctaSub1": "Simple to start.",
+    "ctaSub2": "Built for growing teams.",
+    "ratingText": "Trusted for time tracking and workforce operations",
+    "card1Title": "Leave approvals",
+    "card1Text": "Keep requests, balances, and manager decisions organized.",
+    "card2Title": "Timesheet ready",
+    "card2Text": "Turn approved work records into cleaner time summaries.",
+    "card3Title": "Kiosk mode",
+    "card3Text": "Simple shared check-ins for teams on site or branch floors.",
+    "dashboardLabel": "Workforce Dashboard",
+    "dashToday": "Today",
+    "dashTeamOverview": "Team overview",
+    "dashLive": "Live",
+    "dashCheckedIn": "Checked in",
+    "dashOnLeave": "On leave",
+    "dashTrackedHrs": "Tracked hrs",
+    "dashMorningShift": "Morning shift synced",
+    "dashLeaveQueue": "Leave queue reviewed",
+    "dashTimesheet": "Timesheet summary prepared",
+    "miniLive": "Live",
+    "miniLiveSub": "workforce status",
+    "miniReady": "Ready",
+    "miniReadySub": "clean records",
+    "miniSmart": "Smart",
+    "miniSmartSub": "daily operations",
+    "leaderTitle": "Operations Leader",
+    "leaderLabel": "Attendio"
+  },
+  "section2": {
+    "label": "Online Time Tracking Software",
+    "h2": "Work Efficiently - Save Time and Costs",
+    "h4": "Easily track working hours, project hours and absences. Accurately, in real time, with only one click. Accessible anytime, anywhere via PC/Mac and smartphone or tablet.",
+    "h3": "Modular Time and Attendance System That Fits Your Needs",
+    "note": "Use Attendio as a complete time tracking system or use our products separately.",
+    "p": "We offer a comprehensive cloud-based time and attendance solution for employee time tracking, project time tracking, and leave management. You can choose to combine any of our modules so that your time tracking system is perfectly adjusted to your individual requirements. Due to the flexibility of our software, our time tracking solutions fit perfectly for companies of any size and any industry, no matter where they operate."
+  },
+  "pricing": {
+    "eyebrow": "PRICING & PLANS",
+    "title": "Transparent.\nFair.\nNo Surprises.",
+    "subtitle": "Try free for 60 days — no credit card, no commitment.\nThen simply pick the plan that fits.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "savePercent": "−17%",
+    "perMonth": "/ month",
+    "billedYearly": "· annually",
+    "custom": "Custom",
+    "yearlyNote": "instead of €{{monthly}}/mo · save €{{save}}/year",
+    "noCard": "No credit card required",
+    "recommended": "Recommended",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "employees": "15",
+        "desc": "For small teams that want to get started fast.",
+        "cta": "Try free for 60 days",
+        "features": ["Up to 15 employees", "Check-in / Check-out", "Leave management", "Basic reports", "1 location", "Email support"],
+        "notIncluded": ["Shift scheduling", "Kiosk mode", "Working time compliance", "SSO / Microsoft login"]
+      },
+      "professional": {
+        "name": "Professional",
+        "employees": "50",
+        "desc": "The complete plan for growing businesses.",
+        "cta": "Try free for 60 days",
+        "features": ["Up to 50 employees", "Everything in Starter", "Shift scheduling & timesheets", "Kiosk mode", "Geofencing & IP rules", "Multiple locations", "Working time compliance", "Roles & permissions (10 roles)", "Notifications", "Priority support"],
+        "notIncluded": ["SSO / Microsoft login", "API access"]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "employees": "∞",
+        "desc": "For organizations with complex requirements.",
+        "cta": "Contact us",
+        "features": ["Unlimited employees", "Everything in Professional", "SSO / Microsoft Entra ID", "API access", "Custom roles & permissions", "Dedicated onboarding", "SLA guarantee", "Custom billing"],
+        "notIncluded": []
+      }
+    },
+    "trust": [
+      { "icon": "🔒", "title": "GDPR compliant", "sub": "EU servers · Data privacy" },
+      { "icon": "⚖️", "title": "Labour law compliant", "sub": "Local working time rules" },
+      { "icon": "🛡️", "title": "Encrypted", "sub": "SSL · Secure data" },
+      { "icon": "⚡", "title": "Setup in 5 min", "sub": "No IT needed" },
+      { "icon": "🚫", "title": "No lock-in", "sub": "Cancel anytime" }
+    ],
+    "faqTitle": "Frequently Asked Questions",
+    "faqs": [
+      {
+        "q": "Do I need a credit card to start the trial?",
+        "a": "No. You can use all features free for 60 days — no payment details needed. After that, you simply choose a plan."
+      },
+      {
+        "q": "Can I cancel anytime?",
+        "a": "Yes. Monthly plans can be cancelled monthly. Annual plans have a yearly term. No hidden fees."
+      },
+      {
+        "q": "Is Attendio GDPR and labour-law compliant?",
+        "a": "Yes. All data is stored on European servers. The platform automatically enforces local labour law requirements and GDPR."
+      },
+      {
+        "q": "What if I have more than 50 employees?",
+        "a": "Above 50 employees we recommend the Enterprise plan with unlimited licences and dedicated support. Just get in touch."
+      },
+      {
+        "q": "Which payment methods do you accept?",
+        "a": "Credit card (Visa, Mastercard, Amex) and SEPA direct debit. Annual invoicing by bank transfer available on request."
+      }
+    ],
+    "bottomEyebrow": "READY TO GET STARTED?",
+    "bottomTitle": "Start today.\nFree & no commitment.",
+    "bottomSub": "No credit card. No obligation.\nTry all features free for 60 days.",
+    "bottomPrimary": "Start for free →",
+    "bottomGhost": "Request a demo",
+    "employees_label": "employees"
+  }
+}

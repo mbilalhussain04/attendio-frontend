@@ -29,7 +29,7 @@
 .signup-brand strong {
     color: #0f172a;
     font-size: 26px;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: -0.04em;
 }
 
@@ -53,7 +53,7 @@
     margin: 0 0 20px;
     color: #2563eb;
     font-size: 13px;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: 0.22em;
 }
 
@@ -64,7 +64,7 @@
     font-size: clamp(44px, 4.8vw, 70px);
     line-height: 1.06;
     letter-spacing: -0.06em;
-    font-weight: 950;
+    font-weight: 750;
 }
 
 .signup-subtitle {
@@ -172,7 +172,7 @@
     margin-left: auto;
     color: #64748b;
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .setup-header {
@@ -202,14 +202,14 @@
     margin: 0;
     color: #94a3b8;
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .setup-header h3 {
     margin: 3px 0 0;
     color: #0f172a;
     font-size: 22px;
-    font-weight: 950;
+    font-weight: 700;
     letter-spacing: -0.04em;
 }
 
@@ -265,14 +265,14 @@
     display: block;
     color: #0f172a;
     font-size: 14px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .progress-row p {
     margin: 3px 0 0;
     color: #64748b;
     font-size: 12px;
-    font-weight: 750;
+    font-weight: 580;
 }
 
 .progress-row>svg {
@@ -309,14 +309,14 @@
     display: block;
     color: #0f172a;
     font-size: 13px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .signup-floating-card p {
     margin: 2px 0 0;
     color: #64748b;
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 620;
 }
 
 .signup-card-one {
@@ -352,6 +352,29 @@
     backdrop-filter: blur(18px);
 }
 
+.signup-plan-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #eef4ff, #e6f0ff);
+    border: 1.5px solid #bfdbfe;
+    border-radius: 14px;
+    padding: 10px 16px;
+    margin-bottom: 18px;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.signup-plan-badge strong {
+    font-weight: 620;
+}
+
+.signup-plan-badge svg {
+    flex-shrink: 0;
+    color: #2563eb;
+}
+
 .signup-card-heading {
     text-align: center;
 }
@@ -360,7 +383,7 @@
     margin: 0;
     color: #0f172a;
     font-size: 26px;
-    font-weight: 950;
+    font-weight: 700;
     letter-spacing: -0.04em;
 }
 

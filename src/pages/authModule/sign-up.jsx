@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router'
+import { Link, useNavigate, useSearchParams } from 'react-router'
 import { toast } from 'sonner'
 import {
     Building2,
@@ -9,7 +9,14 @@ import {
     Users,
     Clock3,
     ArrowRight,
+    Sparkles,
 } from 'lucide-react'
+
+const PLAN_LABELS = {
+    starter: { name: 'Starter', employees: 'up to 15 employees' },
+    professional: { name: 'Professional', employees: 'up to 50 employees' },
+    enterprise: { name: 'Enterprise', employees: 'unlimited employees' },
+}
 import { InputField } from '../../components/form/InputField.jsx'
 import { Button } from '../../components/form/Button.jsx'
 import { FormLink } from '../../components/form/FormLink.jsx'
@@ -18,6 +25,15 @@ import './sign-up.css'
 
 function SignUp() {
     const navigate = useNavigate()
+    const [searchParams] = useSearchParams()
+    const selectedPlanKey = searchParams.get('plan')
+    const selectedPlan = PLAN_LABELS[selectedPlanKey] || null
+
+    useEffect(() => {
+        if (selectedPlanKey) {
+            localStorage.setItem('attendio_selected_plan', selectedPlanKey)
+        }
+    }, [selectedPlanKey])
 
     const {
         register,
@@ -53,6 +69,9 @@ function SignUp() {
                 const slug = response?.data?.company?.slug
                 if (slug) {
                     localStorage.setItem('attendio_tenant_slug', slug)
+                }
+                if (selectedPlanKey) {
+                    localStorage.setItem('attendio_selected_plan', selectedPlanKey)
                 }
                 toast.success('Company workspace created', {
                     description: 'We sent a verification link. Verify your email before signing in.',
@@ -190,11 +209,21 @@ function SignUp() {
 
                 <div className="signup-right">
                     <div className="signup-card">
+                        {selectedPlan && (
+                            <div className="signup-plan-badge">
+                                <Sparkles size={14} />
+                                <span>
+                                    <strong>{selectedPlan.name} Plan</strong>
+                                    {' — '}60-day free trial · {selectedPlan.employees} · No credit card
+                                </span>
+                            </div>
+                        )}
+
                         <div className="signup-card-heading">
                             <h2>
                                 Sign up to <span>Attendio</span>
                             </h2>
-                            <p>Create your account to continue</p>
+                            <p>{selectedPlan ? `Starting your ${selectedPlan.name} trial` : 'Create your account to continue'}</p>
                         </div>
 
                         <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
@@ -256,7 +285,7 @@ function SignUp() {
 
                             <div className="signup-footer">
                                 Already have an account?{' '}
-                                <FormLink to="/sign-in">
+                                <FormLink to={selectedPlanKey ? `/sign-in?plan=${selectedPlanKey}` : '/sign-in'}>
                                     Sign in
                                 </FormLink>
                             </div>

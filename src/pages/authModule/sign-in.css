@@ -28,7 +28,7 @@
 
 .brand-link span:last-child {
     font-size: 26px;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: -0.04em;
     color: #0f172a;
 }
@@ -53,7 +53,7 @@
     margin: 0 0 20px;
     color: #2563eb;
     font-size: 13px;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: 0.22em;
 }
 
@@ -63,7 +63,7 @@
     font-size: clamp(46px, 5vw, 72px);
     line-height: 1.06;
     letter-spacing: -0.06em;
-    font-weight: 950;
+    font-weight: 750;
     color: #0f172a;
 }
 
@@ -172,7 +172,7 @@
     margin-left: auto;
     color: #64748b;
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .access-card {
@@ -202,21 +202,21 @@
     margin: 0;
     color: #94a3b8;
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .access-content h3 {
     margin: 2px 0;
     color: #0f172a;
     font-size: 22px;
-    font-weight: 950;
+    font-weight: 700;
     letter-spacing: -0.04em;
 }
 
 .access-content span {
     color: #2563eb;
     font-size: 13px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .access-check {
@@ -252,14 +252,14 @@
     margin-top: 8px;
     color: #0f172a;
     font-size: 20px;
-    font-weight: 950;
+    font-weight: 700;
 }
 
 .device-stats p {
     margin: 3px 0 0;
     color: #64748b;
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 620;
 }
 
 .activity-feed {
@@ -290,13 +290,13 @@
     margin: 0;
     color: #52627a;
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 620;
 }
 
 .activity-feed strong {
     color: #2563eb;
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .floating-login-card {
@@ -321,14 +321,14 @@
     display: block;
     color: #0f172a;
     font-size: 13px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .floating-login-card p {
     margin: 2px 0 0;
     color: #64748b;
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 620;
 }
 
 .card-secure {
@@ -364,6 +364,29 @@
     backdrop-filter: blur(18px);
 }
 
+.signin-plan-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #eef4ff, #e6f0ff);
+    border: 1.5px solid #bfdbfe;
+    border-radius: 14px;
+    padding: 10px 16px;
+    margin-bottom: 18px;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.signin-plan-badge strong {
+    font-weight: 620;
+}
+
+.signin-plan-badge svg {
+    flex-shrink: 0;
+    color: #2563eb;
+}
+
 .auth-tabs {
     display: flex;
     gap: 4px;
@@ -381,7 +404,7 @@
     background: transparent;
     color: #64748b;
     font-size: 14px;
-    font-weight: 900;
+    font-weight: 700;
     cursor: pointer;
 }
 
@@ -399,7 +422,7 @@
     margin: 0;
     color: #0f172a;
     font-size: 26px;
-    font-weight: 950;
+    font-weight: 700;
     letter-spacing: -0.04em;
 }
 
@@ -437,7 +460,7 @@
     margin: 0;
     color: #94a3b8;
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .sso-buttons {
@@ -452,7 +475,7 @@
     padding: 12px 14px;
     color: #334155;
     font-size: 14px;
-    font-weight: 900;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "pricing": "Precios",
+    "login": "Iniciar sesión",
+    "signUp": "Registrarse"
+  },
+  "hero": {
+    "eyebrow": "GESTIÓN INTELIGENTE DEL TIEMPO Y EQUIPOS",
+    "h1_line1": "La forma más inteligente",
+    "h1_line2": "de registrar el tiempo",
+    "h1_line3": "en toda tu empresa.",
+    "subtitle": "Una plataforma inteligente de gestión del tiempo que ayuda a las empresas a registrar las horas de trabajo, gestionar la asistencia y organizar las operaciones diarias.",
+    "cta": "Empezar con Attendio →",
+    "ctaSub1": "Fácil de empezar.",
+    "ctaSub2": "Diseñado para equipos en crecimiento.",
+    "ratingText": "De confianza para el seguimiento del tiempo y gestión de equipos",
+    "card1Title": "Aprobación de bajas",
+    "card1Text": "Solicitudes, saldos y decisiones de los managers, bien organizados.",
+    "card2Title": "Partes de horas",
+    "card2Text": "Convierte los registros aprobados en resúmenes de horas.",
+    "card3Title": "Modo kiosco",
+    "card3Text": "Fichaje compartido sencillo para equipos en el lugar de trabajo.",
+    "dashboardLabel": "Panel de control",
+    "dashToday": "Hoy",
+    "dashTeamOverview": "Vista del equipo",
+    "dashLive": "En vivo",
+    "dashCheckedIn": "Presentes",
+    "dashOnLeave": "De baja",
+    "dashTrackedHrs": "Horas registradas",
+    "dashMorningShift": "Turno de mañana sincronizado",
+    "dashLeaveQueue": "Solicitudes de baja revisadas",
+    "dashTimesheet": "Partes de horas preparados",
+    "miniLive": "Live",
+    "miniLiveSub": "estado del equipo",
+    "miniReady": "Listo",
+    "miniReadySub": "datos limpios",
+    "miniSmart": "Inteligente",
+    "miniSmartSub": "operaciones diarias",
+    "leaderTitle": "Responsable de Operaciones",
+    "leaderLabel": "Attendio"
+  },
+  "section2": {
+    "label": "Software de control de presencia online",
+    "h2": "Trabaja eficientemente – Ahorra tiempo y costes",
+    "h4": "Registra fácilmente horas de trabajo, horas de proyecto y ausencias. Con precisión, en tiempo real, con un solo clic. Accesible en cualquier momento y lugar.",
+    "h3": "Sistema de control de presencia modular adaptado a tus necesidades",
+    "note": "Usa Attendio como sistema completo o combina nuestros módulos por separado.",
+    "p": "Ofrecemos una solución completa en la nube para el control de presencia, seguimiento de proyectos y gestión de bajas. Combina los módulos que necesites para adaptar perfectamente el sistema a tus requisitos. Gracias a la flexibilidad de nuestro software, Attendio se adapta a empresas de cualquier tamaño y sector."
+  },
+  "pricing": {
+    "eyebrow": "PRECIOS Y PLANES",
+    "title": "Transparente.\nJusto.\nSin sorpresas.",
+    "subtitle": "Prueba gratis 60 días — sin tarjeta de crédito, sin compromiso.\nLuego elige el plan que mejor se adapte.",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "savePercent": "−17%",
+    "perMonth": "/ mes",
+    "billedYearly": "· anualmente",
+    "custom": "Personalizado",
+    "yearlyNote": "en vez de €{{monthly}}/mes · ahorra €{{save}}/año",
+    "noCard": "No se requiere tarjeta de crédito",
+    "recommended": "Recomendado",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "employees": "15",
+        "desc": "Para equipos pequeños que quieren empezar rápido.",
+        "cta": "Prueba gratis 60 días",
+        "features": ["Hasta 15 empleados", "Entrada / Salida", "Gestión de bajas", "Informes básicos", "1 ubicación", "Soporte por email"],
+        "notIncluded": ["Planificación de turnos", "Modo kiosco", "Cumplimiento normativo", "SSO / Microsoft Login"]
+      },
+      "professional": {
+        "name": "Professional",
+        "employees": "50",
+        "desc": "El plan completo para empresas en crecimiento.",
+        "cta": "Prueba gratis 60 días",
+        "features": ["Hasta 50 empleados", "Todo de Starter", "Planificación & partes de horas", "Modo kiosco", "Geofencing & reglas IP", "Múltiples ubicaciones", "Cumplimiento normativo", "Roles & permisos (10 roles)", "Notificaciones", "Soporte prioritario"],
+        "notIncluded": ["SSO / Microsoft Login", "Acceso API"]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "employees": "∞",
+        "desc": "Para organizaciones con requisitos complejos.",
+        "cta": "Contáctanos",
+        "features": ["Empleados ilimitados", "Todo de Professional", "SSO / Microsoft Entra ID", "Acceso API", "Roles personalizados", "Onboarding dedicado", "Garantía SLA", "Facturación personalizada"],
+        "notIncluded": []
+      }
+    },
+    "trust": [
+      { "icon": "🔒", "title": "Cumple RGPD", "sub": "Servidores UE · Privacidad" },
+      { "icon": "⚖️", "title": "Cumple normativa laboral", "sub": "Reglas locales" },
+      { "icon": "🛡️", "title": "Cifrado", "sub": "SSL · Datos seguros" },
+      { "icon": "⚡", "title": "Config en 5 min", "sub": "Sin IT" },
+      { "icon": "🚫", "title": "Sin permanencia", "sub": "Cancela cuando quieras" }
+    ],
+    "faqTitle": "Preguntas frecuentes",
+    "faqs": [
+      {
+        "q": "¿Necesito tarjeta de crédito para la prueba?",
+        "a": "No. Puedes usar todas las funciones gratis durante 60 días — sin datos de pago. Luego eliges un plan."
+      },
+      {
+        "q": "¿Puedo cancelar en cualquier momento?",
+        "a": "Sí. Los planes mensuales se pueden cancelar mensualmente. Los planes anuales tienen vigencia de un año. Sin cargos ocultos."
+      },
+      {
+        "q": "¿Attendio cumple con el RGPD?",
+        "a": "Sí. Todos los datos se almacenan en servidores europeos. La plataforma aplica automáticamente la normativa local."
+      },
+      {
+        "q": "¿Qué pasa si tengo más de 50 empleados?",
+        "a": "Por encima de 50 empleados recomendamos el plan Enterprise con licencias ilimitadas y soporte dedicado."
+      },
+      {
+        "q": "¿Qué métodos de pago aceptáis?",
+        "a": "Tarjeta de crédito (Visa, Mastercard, Amex) y débito SEPA. Facturación anual por transferencia disponible bajo solicitud."
+      }
+    ],
+    "bottomEyebrow": "¿LISTO PARA EMPEZAR?",
+    "bottomTitle": "Empieza hoy.\nGratis y sin compromiso.",
+    "bottomSub": "Sin tarjeta de crédito. Sin compromiso.\nPrueba todas las funciones gratis durante 60 días.",
+    "bottomPrimary": "Empezar gratis →",
+    "bottomGhost": "Solicitar una demo",
+    "employees_label": "empleados"
+  }
+}

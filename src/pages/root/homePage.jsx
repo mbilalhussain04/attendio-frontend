@@ -1,66 +1,55 @@
 import { useState, useEffect } from 'react'
 import './homePage.css'
 import { Link } from "react-router-dom"
-import teamIllustration from "../../assets/teamwork.png";
+import { useTranslation } from 'react-i18next'
+import teamIllustration from "../../assets/teamwork.png"
+import PricingSection from './PricingSection.jsx'
+import './PricingSection.css'
+import LanguageSwitcher from '../../components/LanguageSwitcher.jsx'
 
 
 export default function HomePage() {
+  const { t } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
 
   const cards = [
-    {
-      title: 'Leave approvals',
-      text: 'Keep requests, balances, and manager decisions organized.',
-      icon: '◷',
-    },
-    {
-      title: 'Timesheet ready',
-      text: 'Turn approved work records into cleaner time summaries.',
-      icon: '✓',
-    },
-    {
-      title: 'Kiosk mode',
-      text: 'Simple shared check-ins for teams on site or branch floors.',
-      icon: '⌁',
-    },
+    { title: t('hero.card1Title'), text: t('hero.card1Text'), icon: '◷' },
+    { title: t('hero.card2Title'), text: t('hero.card2Text'), icon: '✓' },
+    { title: t('hero.card3Title'), text: t('hero.card3Text'), icon: '⌁' },
   ]
 
-  const [time, setTime] = useState(() => new Date());
+  const [time, setTime] = useState(() => new Date())
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
+    const timer = setInterval(() => setTime(new Date()), 1000)
+    return () => clearInterval(timer)
+  }, [])
 
-    return () => clearInterval(timer);
-  }, []);
-
-  const seconds = time.getSeconds();
-  const minutes = time.getMinutes();
-  const hours = time.getHours();
-
-  const secondDeg = seconds * 6;
-  const minuteDeg = minutes * 6 + seconds * 0.1;
-  const hourDeg = (hours % 12) * 30 + minutes * 0.5;
+  const seconds = time.getSeconds()
+  const minutes = time.getMinutes()
+  const hours = time.getHours()
+  const secondDeg = seconds * 6
+  const minuteDeg = minutes * 6 + seconds * 0.1
+  const hourDeg = (hours % 12) * 30 + minutes * 0.5
 
   return (
     <main className="page">
       <nav className="nav">
         <div className="brand">
-          <div className="mark">
-            <span />
-          </div>
+          <div className="mark"><span /></div>
           <strong>Attendio</strong>
         </div>
 
         <div className={`navActions ${menuOpen ? 'open' : ''}`}>
-          {/* <a href="#">Get a Demo</a> */}
+          <a href="#pricing">{t('nav.pricing')}</a>
+
           <Link to="/sign-in">
-            <button className="login">Login</button>
+            <button className="login">{t('nav.login')}</button>
           </Link>
           <Link to="/sign-up">
-            <button className="signup">Sign Up</button>
+            <button className="signup">{t('nav.signUp')}</button>
           </Link>
+          <LanguageSwitcher />
         </div>
 
         <button
@@ -68,44 +57,38 @@ export default function HomePage() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <span />
-          <span />
-          <span />
+          <span /><span /><span />
         </button>
       </nav>
 
       <section className="hero">
         <div className="copy">
-          <p className="eyebrow">SMART TIME & WORKFORCE OPERATIONS</p>
+          <p className="eyebrow">{t('hero.eyebrow')}</p>
 
-          <h1>
-            The smarter way
+          <h2>
+            {t('hero.h1_line1')}
             <br />
-            to track time across
+            {t('hero.h1_line2')}
             <br />
-            your workforce.
-          </h1>
+            {t('hero.h1_line3')}
+          </h2>
 
-          <p className="subtitle">
-            A smarter workforce time tracking platform that helps companies
-            track employee work hours, manage attendance, and keep daily
-            operations organized across teams and shifts.
-          </p>
+          <p className="subtitle">{t('hero.subtitle')}</p>
 
           <div className="ctaRow">
             <Link to="/sign-in">
-              <button className="cta">Start with Attendio →</button>
+              <button className="cta">{t('hero.cta')}</button>
             </Link>
             <p>
-              Simple to start.
+              {t('hero.ctaSub1')}
               <br />
-              Built for growing teams.
+              {t('hero.ctaSub2')}
             </p>
           </div>
 
           <div className="rating">
             <span>★★★★★</span>
-            <p>Trusted for time tracking and workforce operations</p>
+            <p>{t('hero.ratingText')}</p>
           </div>
 
           <div className="featureCards">
@@ -130,8 +113,8 @@ export default function HomePage() {
             <div className="node n5" />
 
             <div className="leaderCircle">
-              <h3>Operations Leader</h3>
-              <div className="label">Attendio</div>
+              <h3>{t('hero.leaderTitle')}</h3>
+              <div className="label">{t('hero.leaderLabel')}</div>
               <div className="pin" />
               <div className="appIcon">
                 <div className="checkIcon">✓</div>
@@ -142,59 +125,45 @@ export default function HomePage() {
               <div className="screen">
                 <div className="screenTop">
                   <div className="windowDots">
-                    <span />
-                    <span />
-                    <span />
+                    <span /><span /><span />
                   </div>
-                  <p>Workforce Dashboard</p>
+                  <p>{t('hero.dashboardLabel')}</p>
                 </div>
 
                 <div className="dashboard">
                   <aside>
                     <div className="sideIcon" />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
+                    <span /><span /><span /><span />
                   </aside>
 
                   <section>
                     <div className="dashHead">
                       <div>
-                        <p>Today</p>
-                        <h4>Team overview</h4>
+                        <p>{t('hero.dashToday')}</p>
+                        <h4>{t('hero.dashTeamOverview')}</h4>
                       </div>
-                      <button>Live</button>
+                      <button>{t('hero.dashLive')}</button>
                     </div>
 
                     <div className="stats">
                       <div>
                         <strong>128</strong>
-                        <p>Checked in</p>
+                        <p>{t('hero.dashCheckedIn')}</p>
                       </div>
                       <div>
                         <strong>12</strong>
-                        <p>On leave</p>
+                        <p>{t('hero.dashOnLeave')}</p>
                       </div>
                       <div>
                         <strong>4.8k</strong>
-                        <p>Tracked hrs</p>
+                        <p>{t('hero.dashTrackedHrs')}</p>
                       </div>
                     </div>
 
                     <div className="activity">
-                      <div>
-                        <span />
-                        <p>Morning shift synced</p>
-                      </div>
-                      <div>
-                        <span />
-                        <p>Leave queue reviewed</p>
-                      </div>
-                      <div>
-                        <span />
-                        <p>Timesheet summary prepared</p>
-                      </div>
+                      <div><span /><p>{t('hero.dashMorningShift')}</p></div>
+                      <div><span /><p>{t('hero.dashLeaveQueue')}</p></div>
+                      <div><span /><p>{t('hero.dashTimesheet')}</p></div>
                     </div>
                   </section>
                 </div>
@@ -204,18 +173,18 @@ export default function HomePage() {
             </div>
 
             <div className="miniCard leftTop">
-              <strong>Live</strong>
-              <p>workforce status</p>
+              <strong>{t('hero.miniLive')}</strong>
+              <p>{t('hero.miniLiveSub')}</p>
             </div>
 
             <div className="miniCard rightTop">
-              <strong>Ready</strong>
-              <p>clean records</p>
+              <strong>{t('hero.miniReady')}</strong>
+              <p>{t('hero.miniReadySub')}</p>
             </div>
 
             <div className="miniCard leftBottom">
-              <strong>Smart</strong>
-              <p>daily operations</p>
+              <strong>{t('hero.miniSmart')}</strong>
+              <p>{t('hero.miniSmartSub')}</p>
             </div>
           </div>
         </div>
@@ -224,13 +193,10 @@ export default function HomePage() {
       {/* Section 2 */}
       <section className="attendanceSection">
         <div className="attendanceTop">
-          <p>Online Time Tracking Software</p>
+          <p>{t('section2.label')}</p>
           <span />
-          <h2>Work Efficiently - Save Time and Costs</h2>
-          <h4>
-            Easily track working hours, project hours and absences. Accurately, in real time,
-            with only one click. Accessible anytime, anywhere via PC/Mac and smartphone or tablet.
-          </h4>
+          <h2>{t('section2.h2')}</h2>
+          <h4>{t('section2.h4')}</h4>
         </div>
 
         <div className="attendanceContent">
@@ -241,36 +207,23 @@ export default function HomePage() {
               {[...Array(12)].map((_, i) => (
                 <i key={i} style={{ transform: `rotate(${i * 30}deg)` }} />
               ))}
-
               <b className="hour" style={{ transform: `rotate(${hourDeg}deg)` }} />
               <b className="minute" style={{ transform: `rotate(${minuteDeg}deg)` }} />
               <b className="second" style={{ transform: `rotate(${secondDeg}deg)` }} />
-
               <em />
               <small>attendio</small>
             </div>
           </div>
 
           <div className="attendanceText">
-            <h3>Modular Time and Attendance System That Fits Your Needs</h3>
-
-            <div className="attendanceNote">
-              Use Attendio as a complete time tracking system or use our products separately.
-            </div>
-
-            <p>
-              We offer a comprehensive cloud-based time and attendance solution for employee
-              time tracking, project time tracking, and leave management. You can choose to
-              combine any of our modules so that your time tracking system is perfectly
-              adjusted to your individual requirements. Due to the flexibility of our software,
-              our time tracking solutions fit perfectly for companies of any size and any
-              industry, no matter where they operate.
-            </p>
+            <h3>{t('section2.h3')}</h3>
+            <div className="attendanceNote">{t('section2.note')}</div>
+            <p>{t('section2.p')}</p>
           </div>
         </div>
       </section>
 
-
+      <PricingSection />
     </main>
   )
 }

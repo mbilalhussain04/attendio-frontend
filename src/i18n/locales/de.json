@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "pricing": "Preise",
+    "login": "Anmelden",
+    "signUp": "Registrieren"
+  },
+  "hero": {
+    "eyebrow": "SMARTE ZEIT- & PERSONALVERWALTUNG",
+    "h1_line1": "Die klügere Art,",
+    "h1_line2": "Arbeitszeiten zu erfassen –",
+    "h1_line3": "in Ihrem ganzen Unternehmen.",
+    "subtitle": "Eine smarte Workforce-Plattform, die Unternehmen dabei hilft, Arbeitsstunden zu erfassen, die Anwesenheit zu verwalten und den täglichen Betrieb über Teams und Schichten hinweg zu organisieren.",
+    "cta": "Mit Attendio starten →",
+    "ctaSub1": "Einfach zu starten.",
+    "ctaSub2": "Gebaut für wachsende Teams.",
+    "ratingText": "Vertraut für Zeiterfassung und Personalverwaltung",
+    "card1Title": "Urlaubsanträge",
+    "card1Text": "Anträge, Salden und Entscheidungen übersichtlich verwalten.",
+    "card2Title": "Stundennachweise",
+    "card2Text": "Genehmigte Arbeitszeiten in saubere Abrechnungen umwandeln.",
+    "card3Title": "Kiosk-Modus",
+    "card3Text": "Einfaches gemeinsames Einstempeln für Teams vor Ort.",
+    "dashboardLabel": "Workforce Dashboard",
+    "dashToday": "Heute",
+    "dashTeamOverview": "Teamübersicht",
+    "dashLive": "Live",
+    "dashCheckedIn": "Eingecheckt",
+    "dashOnLeave": "Im Urlaub",
+    "dashTrackedHrs": "Erfasste Std.",
+    "dashMorningShift": "Frühschicht synchronisiert",
+    "dashLeaveQueue": "Urlaubsanträge bearbeitet",
+    "dashTimesheet": "Stundennachweise erstellt",
+    "miniLive": "Live",
+    "miniLiveSub": "Personalstatus",
+    "miniReady": "Bereit",
+    "miniReadySub": "saubere Daten",
+    "miniSmart": "Smart",
+    "miniSmartSub": "täglicher Betrieb",
+    "leaderTitle": "Operations Leader",
+    "leaderLabel": "Attendio"
+  },
+  "section2": {
+    "label": "Online-Zeiterfassungssoftware",
+    "h2": "Effizient arbeiten – Zeit und Kosten sparen",
+    "h4": "Arbeitszeiten, Projektzeiten und Abwesenheiten ganz einfach erfassen. Genau, in Echtzeit, mit nur einem Klick. Jederzeit und überall zugänglich – per PC/Mac oder Smartphone/Tablet.",
+    "h3": "Modulares Zeiterfassungssystem, das sich Ihren Anforderungen anpasst",
+    "note": "Nutzen Sie Attendio als vollständiges System oder kombinieren Sie einzelne Module.",
+    "p": "Wir bieten eine umfassende cloudbasierte Lösung für Mitarbeiterzeiterfassung, Projektzeiterfassung und Urlaubsverwaltung. Kombinieren Sie beliebige Module, sodass Ihr System perfekt auf Ihre Anforderungen zugeschnitten ist. Dank der Flexibilität unserer Software passt Attendio zu Unternehmen jeder Größe und Branche, ganz gleich wo sie tätig sind."
+  },
+  "pricing": {
+    "eyebrow": "PREISE & PLÄNE",
+    "title": "Transparent.\nFair.\nOhne Überraschungen.",
+    "subtitle": "60 Tage kostenlos testen — keine Kreditkarte, keine Verpflichtung.\nDanach einfach den passenden Plan wählen.",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "savePercent": "−17%",
+    "perMonth": "/ Monat",
+    "billedYearly": "· jährlich",
+    "custom": "Individuell",
+    "yearlyNote": "statt €{{monthly}}/Monat · spare €{{save}}/Jahr",
+    "noCard": "Keine Kreditkarte erforderlich",
+    "recommended": "Empfohlen",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "employees": "15",
+        "desc": "Für kleine Teams, die schnell starten wollen.",
+        "cta": "60 Tage kostenlos testen",
+        "features": ["Bis zu 15 Mitarbeiter", "Check-in / Check-out", "Urlaubsverwaltung", "Basis-Berichte", "1 Standort", "E-Mail Support"],
+        "notIncluded": ["Schichtplanung", "Kiosk-Modus", "ArbZG-Compliance", "SSO / Microsoft Login"]
+      },
+      "professional": {
+        "name": "Professional",
+        "employees": "50",
+        "desc": "Der vollständige Plan für wachsende Unternehmen.",
+        "cta": "60 Tage kostenlos testen",
+        "features": ["Bis zu 50 Mitarbeiter", "Alles aus Starter", "Schichtplanung & Timesheets", "Kiosk-Modus", "Geofencing & IP-Regeln", "Mehrere Standorte", "ArbZG-Compliance", "Rollen & Rechte (10 Rollen)", "Benachrichtigungen", "Prioritäts-Support"],
+        "notIncluded": ["SSO / Microsoft Login", "API-Zugang"]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "employees": "∞",
+        "desc": "Für Unternehmen mit komplexen Anforderungen.",
+        "cta": "Kontakt aufnehmen",
+        "features": ["Unbegrenzte Mitarbeiter", "Alles aus Professional", "SSO / Microsoft Entra ID", "API-Zugang", "Eigene Rollen & Rechte", "Dediziertes Onboarding", "SLA-Garantie", "Individuelle Abrechnung"],
+        "notIncluded": []
+      }
+    },
+    "trust": [
+      { "icon": "🔒", "title": "DSGVO-konform", "sub": "EU-Server · Datenschutz" },
+      { "icon": "⚖️", "title": "ArbZG-konform", "sub": "Deutsches Arbeitsrecht" },
+      { "icon": "🛡️", "title": "Verschlüsselt", "sub": "SSL · Sichere Daten" },
+      { "icon": "⚡", "title": "Setup in 5 Min", "sub": "Kein IT nötig" },
+      { "icon": "🚫", "title": "Kein Lock-in", "sub": "Jederzeit kündbar" }
+    ],
+    "faqTitle": "Häufige Fragen",
+    "faqs": [
+      {
+        "q": "Brauche ich eine Kreditkarte für den Test?",
+        "a": "Nein. Du kannst 60 Tage lang kostenlos alle Funktionen nutzen – ohne Zahlungsdaten. Erst danach entscheidest du dich für einen Plan."
+      },
+      {
+        "q": "Kann ich jederzeit kündigen?",
+        "a": "Ja. Monatliche Pläne können monatlich gekündigt werden. Beim Jahresplan gilt eine jährliche Laufzeit. Keine versteckten Gebühren."
+      },
+      {
+        "q": "Ist Attendio DSGVO- und ArbZG-konform?",
+        "a": "Ja. Alle Daten liegen auf europäischen Servern. Die Plattform erzwingt automatisch die Vorgaben des deutschen Arbeitszeitgesetzes (ArbZG) und der DSGVO."
+      },
+      {
+        "q": "Was passiert wenn ich mehr als 50 Mitarbeiter habe?",
+        "a": "Ab 50 Mitarbeitern empfehlen wir den Enterprise-Plan mit unbegrenzten Lizenzen und dediziertem Support. Einfach Kontakt aufnehmen."
+      },
+      {
+        "q": "Welche Zahlungsmethoden akzeptiert ihr?",
+        "a": "Kreditkarte (Visa, Mastercard, Amex) und SEPA-Lastschrift. Auf Anfrage auch Jahresrechnung per Überweisung."
+      }
+    ],
+    "bottomEyebrow": "BEREIT LOSZULEGEN?",
+    "bottomTitle": "Starte noch heute.\nKostenlos & unverbindlich.",
+    "bottomSub": "Keine Kreditkarte. Keine Verpflichtung.\n60 Tage alle Funktionen kostenlos testen.",
+    "bottomPrimary": "Jetzt kostenlos starten →",
+    "bottomGhost": "Demo anfragen",
+    "employees_label": "MA"
+  }
+}

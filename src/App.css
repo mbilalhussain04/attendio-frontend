@@ -61,7 +61,7 @@ button {
 
 .brand strong {
   font-size: 24px;
-  font-weight: 850;
+  font-weight: 650;
   letter-spacing: -0.04em;
 }
 
@@ -90,7 +90,7 @@ button {
 .navActions a {
   color: #64748b;
   text-decoration: none;
-  font-weight: 750;
+  font-weight: 580;
   font-size: 15px;
 }
 
@@ -100,7 +100,7 @@ button {
   padding: 0 22px;
   border-radius: 14px;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 620;
   cursor: pointer;
 }
 
@@ -165,7 +165,7 @@ button {
   margin: 0 0 20px;
   color: #2563eb;
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 650;
   letter-spacing: 0.18em;
 }
 
@@ -176,7 +176,7 @@ button {
   font-size: clamp(48px, 4.6vw, 72px);
   line-height: 1.07;
   letter-spacing: -0.06em;
-  font-weight: 900;
+  font-weight: 700;
   text-align: left;
 }
 
@@ -204,7 +204,7 @@ button {
   background: linear-gradient(135deg, #2563eb, #38bdf8);
   color: white;
   font-size: 18px;
-  font-weight: 850;
+  font-weight: 650;
   cursor: pointer;
   box-shadow: 0 18px 38px rgba(37, 99, 235, 0.24);
   transition: 0.25s ease;
@@ -293,7 +293,7 @@ button {
   background: linear-gradient(135deg, #2563eb, #38bdf8);
   color: white;
   font-size: 28px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
   box-shadow: 0 14px 28px rgba(37, 99, 235, 0.22);
 }
@@ -303,7 +303,7 @@ button {
   color: #0f172a;
   font-size: 17px;
   line-height: 1.1;
-  font-weight: 850;
+  font-weight: 650;
   letter-spacing: -0.03em;
 }
 
@@ -348,7 +348,7 @@ button {
   display: grid;
   place-items: center;
   font-size: clamp(120px, 13vw, 210px);
-  font-weight: 900;
+  font-weight: 700;
   color: rgba(37, 99, 235, 0.07);
 }
 
@@ -433,7 +433,7 @@ button {
   justify-content: space-between;
   color: #64748b;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 620;
 }
 
 .windowDots span {
@@ -504,14 +504,14 @@ button {
   margin: 0;
   color: #94a3b8;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 620;
 }
 
 .dashHead h4 {
   margin: 4px 0 0;
   font-size: 21px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 700;
   color: #111827;
 }
 
@@ -522,7 +522,7 @@ button {
   color: #2563eb;
   padding: 8px 14px;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .stats {
@@ -541,7 +541,7 @@ button {
 
 .stats strong {
   font-size: 23px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .stats p {
@@ -602,7 +602,7 @@ button {
   text-align: center;
   color: #2563eb;
   font-size: clamp(24px, 2.1vw, 32px);
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .label {
@@ -615,7 +615,7 @@ button {
   padding: 13px 20px;
   border-radius: 10px;
   font-size: 18px;
-  font-weight: 850;
+  font-weight: 650;
 }
 
 .label::after {
@@ -664,7 +664,7 @@ button {
   background: linear-gradient(135deg, #2563eb, #38bdf8);
   color: white;
   font-size: 28px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .miniCard {
@@ -682,7 +682,7 @@ button {
 .miniCard strong {
   display: block;
   font-size: 24px;
-  font-weight: 850;
+  font-weight: 650;
 }
 
 .miniCard p {

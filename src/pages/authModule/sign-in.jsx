@@ -9,7 +9,14 @@ import {
     Building2,
     Fingerprint,
     CheckCircle2,
+    Sparkles,
 } from 'lucide-react'
+
+const PLAN_LABELS = {
+    starter: { name: 'Starter', employees: 'up to 15 employees' },
+    professional: { name: 'Professional', employees: 'up to 50 employees' },
+    enterprise: { name: 'Enterprise', employees: 'unlimited employees' },
+}
 import { InputField } from '../../components/form/InputField.jsx'
 import { Button } from '../../components/form/Button.jsx'
 import { FormLink } from '../../components/form/FormLink.jsx'
@@ -22,11 +29,14 @@ function SignIn() {
     const navigate = useNavigate()
     const location = useLocation()
     const { login } = useAuth()
-    const [authMode, setAuthMode] = useState(() => new URLSearchParams(location.search).get('mode') === 'kiosk' ? 'kiosk' : 'standard')
+    const searchParams = new URLSearchParams(location.search)
+    const [authMode, setAuthMode] = useState(() => searchParams.get('mode') === 'kiosk' ? 'kiosk' : 'standard')
     const [showSsoEmail, setShowSsoEmail] = useState(false)
     const [ssoEmail, setSsoEmail] = useState('')
     const [showMfaToken, setShowMfaToken] = useState(false)
-    const explicitTenantSlug = new URLSearchParams(location.search).get('tenant') || ''
+    const explicitTenantSlug = searchParams.get('tenant') || ''
+    const planKey = searchParams.get('plan')
+    const selectedPlan = PLAN_LABELS[planKey] || null
 
     useEffect(() => {
         const ssoError = new URLSearchParams(location.search).get('sso_error')
@@ -66,6 +76,9 @@ function SignIn() {
         }
         mutate(payload, {
             onSuccess: (data) => {
+                if (planKey) {
+                    localStorage.setItem('attendio_selected_plan', planKey)
+                }
                 login(data)
                 toast.success('Login successful')
                 navigate(getRedirectPath())
@@ -85,6 +98,7 @@ function SignIn() {
     }
 
     const startSso = (provider) => {
+        if (planKey) localStorage.setItem('attendio_selected_plan', planKey)
         const next = encodeURIComponent(getRedirectPath())
         const tenant = explicitTenantSlug ? `&tenant=${encodeURIComponent(explicitTenantSlug)}` : ''
         window.location.href = apiUrl(`/auth/sso/${provider}?next=${next}${tenant}`)
@@ -108,6 +122,7 @@ function SignIn() {
                         toast.error('No SSO provider found for this email')
                         return
                     }
+                    if (planKey) localStorage.setItem('attendio_selected_plan', planKey)
                     const next = encodeURIComponent(getRedirectPath())
                     window.location.href = apiUrl(`${loginUrl.replace('/api/v1', '')}${loginUrl.includes('?') ? '&' : '?'}next=${next}`)
                 },
@@ -281,13 +296,23 @@ function SignIn() {
                             </button>
                         </div>
 
+                        {selectedPlan && authMode === 'standard' && (
+                            <div className="signin-plan-badge">
+                                <Sparkles size={14} />
+                                <span>
+                                    <strong>{selectedPlan.name} Plan</strong>
+                                    {' — '}60-day free trial · {selectedPlan.employees} · No credit card
+                                </span>
+                            </div>
+                        )}
+
                         <div className="auth-heading">
                             <h2>
                                 Sign in to <span>Attendio</span>
                             </h2>
                             <p>
                                 {authMode === 'standard'
-                                    ? 'Sign in to your account to continue'
+                                    ? selectedPlan ? `Continuing your ${selectedPlan.name} trial setup` : 'Sign in to your account to continue'
                                     : 'Enter your employee code and PIN'}
                             </p>
                         </div>
